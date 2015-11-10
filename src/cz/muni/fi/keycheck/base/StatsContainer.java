@@ -1,15 +1,14 @@
-package cz.muni.fi.keycheck;
+package cz.muni.fi.keycheck.base;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author David Formanek
  */
-class StatsContainer implements Stats {
+public class StatsContainer implements Stats {
     private List<Stats> statsInstances = new ArrayList<>();
-    
+
     public void add(Stats stats) {
         statsInstances.add(stats);
     }
@@ -25,6 +24,20 @@ class StatsContainer implements Stats {
     public void print() {
         for (Stats statsInstance : statsInstances) {
             statsInstance.print();
+        }
+    }
+
+    @Override
+    public void changeCard(String icsn) {
+        for (Stats statsInstance : statsInstances) {
+            statsInstance.changeCard(icsn);
+        }
+    }
+
+    @Override
+    public void changeCard(String icsn, long numOfKeys) {
+        for (Stats statsInstance : statsInstances) {
+            statsInstance.changeCard(icsn, numOfKeys);
         }
     }
 }
